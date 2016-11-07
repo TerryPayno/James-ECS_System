@@ -22,9 +22,11 @@ public class Student_Processor {
     studentLName = lName;
 }*/
 public void editInfo(int ID, String fName, String lName){
+    String sqlquery = "INSERT INTO APP.COVERSHEETS(ID, MODULE_CODE,MODULE_TITLE) VALUES(1,310CT,INTELL AGENTS)";
     studentID = ID;
     studentFName = fName;
     studentLName = lName;
+     
 }
 public int getID(){
     return studentID;
