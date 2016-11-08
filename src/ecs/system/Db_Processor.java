@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 
 /**
  *
@@ -63,10 +64,15 @@ public class Db_Processor {
     public String getDataDB(String Modcode){
         try{
             System.out.println(Modcode);
-        ResultSet rs = stmt.executeQuery ("SELECT * FROM APP.COVERSHEETS WHERE MODULE_CODE = ?");
+        
+        String query = "SELECT ID, MODULE_CODE, MODULE_TITLE FROM APP.COVERSHEETS WHERE MODULE_CODE = ?";
         PreparedStatement pt = con.prepareStatement(query);
-        pt.setString(1, attribete);
-        pt.executeUpdate();
+        
+        pt.setString(1, Modcode);    
+        //pt.executeUpdate();
+        
+        ResultSet rs  = pt.executeQuery();
+        if (rs.next()) {
         //SELECT * FROM APP.COVERSHEETS 
         //WHERE MODULE_CODE = '310CT';
         int n = rs.getInt("ID");
@@ -74,15 +80,15 @@ public class Db_Processor {
         String s2 = rs.getString("MODULE_TITLE");
         return (n +s + s2);
         //System.out.println(n + " " + s + " " + s2);
-               
+        }
         }
         catch(SQLException e){
                      System.err.println(e); 
 
                      return null;
                        }
-       
-    }
+       return null;
+    } 
     
     
     
