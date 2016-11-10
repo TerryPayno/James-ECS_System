@@ -29,15 +29,18 @@ public class EventMediator {
     /*public void initConnectToDb(){
     DbPro.ConnectToDb();
     }*/
-    public void getDataFromDB(String Modcode){
-    
-    System.out.println(DbPro.getDataDB(Modcode));
+    public String[] getDataFromDB(String Modcode){
+    String[] s = new String[2];
+    s = DbPro.getDataDB(Modcode);
+    //System.out.println(DbPro.getDataDB(Modcode));
+    System.out.println("lit" + s[0] + s[1]);
+    return (s);
     }
     public void printInfo(){
         System.out.println((StudPro.getID()) + " " + (StudPro.getFName()) + " " + (StudPro.getLName()));
     }
-    public void inputDb(String code, String Title){
-        DbPro.EnterDataDB(code, Title);
+    public void inputDb(String code, String Title, int ID, String Name){
+        DbPro.EnterDataDB(code, Title, ID, Name);
     }
     }
 

@@ -61,7 +61,7 @@ public class Db_Processor {
   
     
     
-    public String getDataDB(String Modcode){
+    public String[] getDataDB(String Modcode){
         try{
             System.out.println(Modcode);
         
@@ -76,9 +76,10 @@ public class Db_Processor {
         //SELECT * FROM APP.COVERSHEETS 
         //WHERE MODULE_CODE = '310CT';
         int n = rs.getInt("ID");
-        String s = rs.getString("MODULE_CODE");
-        String s2 = rs.getString("MODULE_TITLE");
-        return (n +s + s2);
+        String[] s = new String[2];
+        s[0] = rs.getString("MODULE_CODE");
+        s[1] = rs.getString("MODULE_TITLE");
+        return s;
         //System.out.println(n + " " + s + " " + s2);
         }
         }
@@ -93,12 +94,27 @@ public class Db_Processor {
     
     
     
-    public void EnterDataDB(String code, String Title){
+    public void EnterDataDB(String code, String Title, int ID, String Name){
         
         try{
-        String sql = ("INSERT INTO APP.COVERSHEETS (ID,MODULE_CODE,MODULE_TITLE) VALUES (" + p + ",'" + code + "','" + Title  + "')");
-        stmt.executeUpdate(sql);
+        
+        //String sql = ("INSERT INTO APP.COMPCOVERSHEETS (ID,MODULE_CODE,MODULE_TITLE,STUD_ID,STUD_NAME) VALUES (" + p + "','" + code + "','" + Title  + "','" + ID + "','" + Name + "')'");
+        //stmt.executeUpdate(sql);
+        
+        String query = ("INSERT INTO APP.COMPCOVERSHEETS (ID,MODULE_CODE,MODULE_TITLE,STUD_ID,STUD_NAME) VALUES (?,?,?,?,?)");
+        PreparedStatement pt = con.prepareStatement(query);
+        
+        pt.setInt(1, p);
+        pt.setString(2, code);
+        pt.setString(3, Title);
+        pt.setInt(4, ID);
+        pt.setString(5, Name);
+        //pt.executeUpdate();
+        
+        pt.executeUpdate();
+        
         p++;
+        
         }catch(SQLException e){
             System.err.println(e);
         }
