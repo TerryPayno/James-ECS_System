@@ -39,8 +39,6 @@ public class EventMediator {
     public void printInfo(){
         System.out.println((StudPro.getID()) + " " + (StudPro.getFName()) + " " + (StudPro.getLName()));
     }
-    public void inputDb(String code, String Title, int ID, String Name){
-        DbPro.EnterDataDB(code, Title, ID, Name);
-    }
+    
     }
 

@@ -148,7 +148,7 @@ public class ECS_GUI extends javax.swing.JFrame {
         EvnMed.addStudentInfo(Tempvar); 
         //EvnMed.printInfo();
         //EvnMed.initConnectToDb();
-        EvnMed.inputDb(Tempvar,Tempvar2,Tempvar3,Tempvar4);
+        EvnMed.CreateCoverSheet(Tempvar,Tempvar2,Tempvar3,Tempvar4);
         //EvnMed.getDataFromDB();
         
         
