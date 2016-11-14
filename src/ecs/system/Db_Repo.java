@@ -16,12 +16,12 @@ import java.sql.PreparedStatement;
  *
  * @author jwepa
  */
-public class Db_Processor {
+public class Db_Repo {
     Statement stmt;
     Connection con;
     int p;
     
-    public Db_Processor(){
+    public Db_Repo(){
         p = 0;
         try{ 
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
@@ -91,10 +91,12 @@ public class Db_Processor {
        return null;
        
     } 
+    public int GetP(){
+        return p;
+    }
     
     
-    
-    public void EnterDataDB(String code, String Title, int ID, String Name){
+    public void EnterDataDB(int CoverID,String code, String Title, int ID, String Name){
         
         try{
         
@@ -104,7 +106,7 @@ public class Db_Processor {
         String query = ("INSERT INTO APP.COMPCOVERSHEETS (ID,MODULE_CODE,MODULE_TITLE,STUD_ID,STUD_NAME) VALUES (?,?,?,?,?)");
         PreparedStatement pt = con.prepareStatement(query);
         
-        pt.setInt(1, p);
+        pt.setInt(1, CoverID);
         pt.setString(2, code);
         pt.setString(3, Title);
         pt.setInt(4, ID);

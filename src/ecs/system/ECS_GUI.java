@@ -145,11 +145,9 @@ public class ECS_GUI extends javax.swing.JFrame {
         String Tempvar2 = jTextField2.getText();
         int Tempvar3 = Integer.parseInt(jTextField3.getText());
         String Tempvar4 = jTextField4.getText();
-        EvnMed.addStudentInfo(Tempvar); 
-        //EvnMed.printInfo();
-        //EvnMed.initConnectToDb();
-        EvnMed.CreateCoverSheet(Tempvar,Tempvar2,Tempvar3,Tempvar4);
-        //EvnMed.getDataFromDB();
+
+        EvnMed.CreateCoverSheet(Tempvar,Tempvar2);
+
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
