@@ -15,6 +15,7 @@ package ecs.system;
  */
 public class EventMediator {
     CoverSheetCreation_processor CovshePro = new CoverSheetCreation_processor();
+    CoverSheetUpdate_Processor CovsheUp = new CoverSheetUpdate_Processor();
     Db_Repo DbPro = new Db_Repo();
      
     /*public void initConnectToDb(){
@@ -29,6 +30,10 @@ public class EventMediator {
     }
     public void CreateCoverSheet(String code, String Title){
         CovshePro.CreateCoverSheet(code,Title);
+        CovshePro.EnterCoverSheet();
+    }
+    public void UpdateCover(){
+        CovsheUp.CreateCompCoversheet();
     }
     }
 

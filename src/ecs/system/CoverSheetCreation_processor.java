@@ -20,7 +20,7 @@ public void CreateCoverSheet(String code, String Title){
 public void EnterCoverSheet(){
 
     
-    DbPro.EnterDataDB();
+    DbPro.EnterOriginalDataDB(cover.GetModCode(),cover.GetModTitle() );
    
 }
 }

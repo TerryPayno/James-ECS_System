@@ -96,21 +96,21 @@ public class Db_Repo {
     }
     
     
-    public void EnterDataDB(int CoverID,String code, String Title, int ID, String Name){
+    public void EnterOriginalDataDB(String code, String Title){
         
         try{
         
         //String sql = ("INSERT INTO APP.COMPCOVERSHEETS (ID,MODULE_CODE,MODULE_TITLE,STUD_ID,STUD_NAME) VALUES (" + p + "','" + code + "','" + Title  + "','" + ID + "','" + Name + "')'");
         //stmt.executeUpdate(sql);
         
-        String query = ("INSERT INTO APP.COMPCOVERSHEETS (ID,MODULE_CODE,MODULE_TITLE,STUD_ID,STUD_NAME) VALUES (?,?,?,?,?)");
+        String query = ("INSERT INTO APP.COVERSHEETS (ID,MODULE_CODE,MODULE_TITLE) VALUES (?,?,?)");
         PreparedStatement pt = con.prepareStatement(query);
         
-        pt.setInt(1, CoverID);
+        pt.setInt(1, p);
         pt.setString(2, code);
         pt.setString(3, Title);
-        pt.setInt(4, ID);
-        pt.setString(5, Name);
+        //pt.setInt(4, ID);
+        //pt.setString(5, Name);
         //pt.executeUpdate();
         
         pt.executeUpdate();

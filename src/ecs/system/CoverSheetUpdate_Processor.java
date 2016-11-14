@@ -11,7 +11,12 @@ package ecs.system;
  */
 public class CoverSheetUpdate_Processor {
     Db_Repo DbPro = new Db_Repo();
+    CoverSheet cover  = new CoverSheet();
     
+    public void CreateCompCoversheet(){
+        cover.UpdateCoversheet(0, Name);
+        
+    }
     
     
     public void UpdateCoverSheet(){
