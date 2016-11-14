@@ -10,17 +10,25 @@ package ecs.system;
  * @author jwepa
  */
 public class CoverSheetUpdate_Processor {
-    Db_Repo DbPro = new Db_Repo();
     CoverSheet cover  = new CoverSheet();
     
-    public void CreateCompCoversheet(){
-        cover.UpdateCoversheet(0, Name);
+    public void CreateCompCoversheet(String Modcode, String Title, int ID, String Name){
+        cover.UpdateCoversheet(Modcode,Title,ID,Name);
         
     }
+    public String[] getDataFromobj(String Modcode){
+        cover.Restobj(Modcode);
+        String[] S = new String[2];
+        S[0] = cover.GetModCode();
+        S[1] = cover.GetModTitle();
+        return S;
+    }
+    public void CreateCoverSheet(String code, String Title){
+        cover.CreateCoverSheet(code,Title);
+    }
     
-    
-    public void UpdateCoverSheet(){
-        DbPro.UpdateDataDB();
+    public void UpdateCoverSheetDb(){
+        
     }
     
 }

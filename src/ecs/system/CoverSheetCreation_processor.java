@@ -11,18 +11,19 @@ package ecs.system;
  */
 public class CoverSheetCreation_processor {
 CoverSheet cover  = new CoverSheet();
-Db_Repo DbPro = new Db_Repo();
+
+
 public void CreateCoverSheet(String code, String Title){
     
     cover.CreateCoverSheet(code, Title);
     
 }
-public void EnterCoverSheet(){
+
 
     
-    DbPro.EnterOriginalDataDB(cover.GetModCode(),cover.GetModTitle() );
+    
    
-}
+
 }
 
     

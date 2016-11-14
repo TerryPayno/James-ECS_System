@@ -12,21 +12,37 @@ package ecs.system;
  * @author jwepa
  */
 public class CoverSheet {
+    Db_Repo DbPro = new Db_Repo();
     int CoverSheetID;
     String ModCode;
     String ModTitle;
     int StudID;
     String StudName;
+    String[] s = new String[3];
 
 
     
     public void CreateCoverSheet(String code, String Title){
         ModCode = code;
         ModTitle = Title;
+        DbPro.EnterOriginalDataDB(ModCode,ModTitle);
     }
-    public void UpdateCoversheet(int ID, String Name){
+    public void UpdateCoversheet(String Code,String modTitle, int ID, String Name){
+        //CoverSheetID = Integer.parseInt(s[0]);
+        ModCode = Code;
+        ModTitle = modTitle;
         StudID = ID;
         StudName = Name;
+        System.out.print(CoverSheetID+" "+ModCode+" "+ModTitle+" "+StudID+" "+StudName);
+        DbPro.UpdateDataDB(ModCode,ModTitle,StudID,StudName);
+        
+    }
+    public boolean Restobj(String Modcode){
+        String[] S = new String[2];
+        S = DbPro.Restobj(Modcode);
+        ModCode = S[0];
+        ModTitle = S[1];
+        return true;
     }
     
     
@@ -46,6 +62,10 @@ public class CoverSheet {
     public String GetStudName(){
         return StudName;
     }
+//    public void GetDataDB(String Modcode){
+//    
+//    s = DbPro.getDataDB(Modcode);
+//    }
 //    public void inputDb(String code, String Title, int ID, String Name){
 //        DbPro.EnterDataDB(CoverSheetID,ModCode, ModTitle, StudID, StudName);
 //    }

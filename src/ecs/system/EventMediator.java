@@ -14,26 +14,24 @@ package ecs.system;
  * @author jwepa
  */
 public class EventMediator {
-    CoverSheetCreation_processor CovshePro = new CoverSheetCreation_processor();
+    CoverSheetCreation_processor CovsheCre = new CoverSheetCreation_processor();
     CoverSheetUpdate_Processor CovsheUp = new CoverSheetUpdate_Processor();
     Db_Repo DbPro = new Db_Repo();
      
     /*public void initConnectToDb(){
     DbPro.ConnectToDb();
     }*/
-    public String[] getDataFromDB(String Modcode){ //// WTF WAS I DOING ???????????? DATABASE LINKED TO MEDIATOR WHERE IS PROCESSOR???????
-    String[] s = new String[2];
-    s = DbPro.getDataDB(Modcode);
-    //System.out.println(DbPro.getDataDB(Modcode));
-    System.out.println("lit" + s[0] + s[1]);
-    return (s);
+    public String[] getDataFromobj(String Modcode){
+        String[] R = new String[2];
+        R = CovsheUp.getDataFromobj(Modcode);
+        return R;
     }
     public void CreateCoverSheet(String code, String Title){
-        CovshePro.CreateCoverSheet(code,Title);
-        CovshePro.EnterCoverSheet();
+        CovsheCre.CreateCoverSheet(code, Title);
     }
-    public void UpdateCover(){
-        CovsheUp.CreateCompCoversheet();
+    public void UpdateCover(String Modcode, String Title, int ID, String Name){
+        
+        CovsheUp.CreateCompCoversheet(Modcode,Title,ID,Name);
     }
     }
 

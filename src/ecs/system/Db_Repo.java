@@ -61,9 +61,34 @@ public class Db_Repo {
   
     
     
-    public String[] getDataDB(String Modcode){
+        public void UpdateDataDB(String code, String Title,int ID,String Name){
+        
         try{
-            System.out.println(Modcode);
+        
+        //String sql = ("INSERT INTO APP.COMPCOVERSHEETS (ID,MODULE_CODE,MODULE_TITLE,STUD_ID,STUD_NAME) VALUES (" + p + "','" + code + "','" + Title  + "','" + ID + "','" + Name + "')'");
+        //stmt.executeUpdate(sql);
+        
+        String query = ("INSERT INTO APP.COMPCOVERSHEETS (ID,MODULE_CODE,MODULE_TITLE,STUD_ID,STUD_NAME) VALUES (?,?,?,?,?)");
+        PreparedStatement pt = con.prepareStatement(query);
+        
+        pt.setInt(1, p);
+        pt.setString(2, code);
+        pt.setString(3, Title);
+        pt.setInt(4, ID);
+        pt.setString(5, Name);
+        //pt.executeUpdate();
+        
+        pt.executeUpdate();
+        
+        p++;
+        
+        }catch(SQLException e){
+            System.err.println(e);
+        }
+        }
+    public String[] Restobj(String Modcode){
+                try{
+            
         
         String query = "SELECT ID, MODULE_CODE, MODULE_TITLE FROM APP.COVERSHEETS WHERE MODULE_CODE = ?";
         PreparedStatement pt = con.prepareStatement(query);
@@ -76,7 +101,10 @@ public class Db_Repo {
         //SELECT * FROM APP.COVERSHEETS 
         //WHERE MODULE_CODE = '310CT';
         int n = rs.getInt("ID");
+
+
         String[] s = new String[2];
+
         s[0] = rs.getString("MODULE_CODE");
         s[1] = rs.getString("MODULE_TITLE");
         return s;
@@ -121,6 +149,7 @@ public class Db_Repo {
             System.err.println(e);
         }
         }
+        
     }
     
 
