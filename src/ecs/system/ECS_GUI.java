@@ -167,17 +167,18 @@ public class ECS_GUI extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String Tempvar = jTextField1.getText();
-        String[] s = new String[2];
-        s = EvnMed.getDataFromDB(Tempvar);
-        System.out.println("This is just before the textfields "+s[0] + s[1]);
-        String temp1 = s[0];
-        String temp2 = s[1];
-        jTextField1.setText(temp1);
-        jTextField2.setText(temp2);
+        String[] S = new String[2];
+        S = EvnMed.getDataFromobj(Tempvar);
+        jTextField1.setText(S[0]);
+        jTextField2.setText(S[1]);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        EvnMed.Updatecover();
+        String Tempvarcode = jTextField1.getText();
+        String Tempvartitle = jTextField2.getText();
+        int Tempvarid = Integer.parseInt(jTextField3.getText());
+        String Tempvarname = jTextField4.getText();
+        EvnMed.UpdateCover(Tempvarcode, Tempvartitle, Tempvarid, Tempvarname);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
