@@ -12,7 +12,8 @@ package ecs.system;
  * @author jwepa
  */
 public class ECS_GUI extends javax.swing.JFrame {
-       EventMediator EvnMed = new EventMediator();
+       CreationMediator CreationMed = new CreationMediator();
+       UpdateMediator UpDateMed = new UpdateMediator();
     /**
      * Creates new form ECS_GUI
      */
@@ -155,7 +156,7 @@ public class ECS_GUI extends javax.swing.JFrame {
         //int Tempvar3 = Integer.parseInt(jTextField3.getText());
         //String Tempvar4 = jTextField4.getText();
 
-        EvnMed.CreateCoverSheet(Tempvar,Tempvar2);
+        CreationMed.CreateCoverSheet(Tempvar,Tempvar2);
 
         
         
@@ -168,7 +169,7 @@ public class ECS_GUI extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String Tempvar = jTextField1.getText();
         String[] S = new String[2];
-        S = EvnMed.getDataFromobj(Tempvar);
+        S = UpDateMed.getDataFromobj(Tempvar);
         jTextField1.setText(S[0]);
         jTextField2.setText(S[1]);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -178,7 +179,7 @@ public class ECS_GUI extends javax.swing.JFrame {
         String Tempvartitle = jTextField2.getText();
         int Tempvarid = Integer.parseInt(jTextField3.getText());
         String Tempvarname = jTextField4.getText();
-        EvnMed.UpdateCover(Tempvarcode, Tempvartitle, Tempvarid, Tempvarname);
+        UpDateMed.UpdateCover(Tempvarcode, Tempvartitle, Tempvarid, Tempvarname);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
