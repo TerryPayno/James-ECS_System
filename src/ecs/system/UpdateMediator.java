@@ -18,7 +18,7 @@ public class UpdateMediator {
         JOptionPane.showMessageDialog(null, "CoverSheet Uploaded");
     }
     public String[] getDataFromobj(String Modcode){
-        String[] R = new String[2];
+        String[] R;
         R = CovsheUp.getDataFromobj(Modcode);
         return R;
     }

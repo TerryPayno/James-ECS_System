@@ -6,14 +6,15 @@
 
 //@@@@@@This is just the GUI That will sent events to the Mediator@@@@@@@//
 package ecs.system;
-
 /**
  *
  * @author jwepa
  */
 public class ECS_GUI extends javax.swing.JFrame {
+       //instantiate the mediators.
        CreationMediator CreationMed = new CreationMediator();
        UpdateMediator UpDateMed = new UpdateMediator();
+       //textFeild = new jTextFeild(20);
     /**
      * Creates new form ECS_GUI
      */
@@ -54,6 +55,7 @@ public class ECS_GUI extends javax.swing.JFrame {
 
         jLabel1.setText("Title");
 
+        jTextField1.setEditable(false);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -144,18 +146,18 @@ public class ECS_GUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 91, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String Tempvar = jTextField1.getText();
+        // When button is clicked take the text from the textfeild and store in temp variables.
+        String Tempvar = jTextField1.getText(); 
         String Tempvar2 = jTextField2.getText();
-        //int Tempvar3 = Integer.parseInt(jTextField3.getText());
-        //String Tempvar4 = jTextField4.getText();
 
+        //Pass temp vars to the method within the CoversheetCreation class. 
         CreationMed.CreateCoverSheet(Tempvar,Tempvar2);
 
         
@@ -167,21 +169,39 @@ public class ECS_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // store text entered in GUI to a temp var
         String Tempvar = jTextField1.getText();
-        String[] S = new String[2];
+        //create list of stirng to store info coming back form Db to display
+        String[] S;
+        //Request information from Database
         S = UpDateMed.getDataFromobj(Tempvar);
+        // Set the text feilds to the information store at postion 0 and 1 in the list of strings
         jTextField1.setText(S[0]);
         jTextField2.setText(S[1]);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        //Again temp variables are used to store information from textfeilds on GUI
         String Tempvarcode = jTextField1.getText();
         String Tempvartitle = jTextField2.getText();
+        //Convert String passed in to a ineger and store in temp variable
         int Tempvarid = Integer.parseInt(jTextField3.getText());
         String Tempvarname = jTextField4.getText();
+        //call a method in update mediator to update the cover sheets to include new info in this case student ids and names.
         UpDateMed.UpdateCover(Tempvarcode, Tempvartitle, Tempvarid, Tempvarname);
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    //jTextField1.getDocument().addDocumentListener(new DocumentListener() {
+  
+//public void changedUpdate(DocumentEvent e) {
+//    changed();
+//  }
+//  public void removeUpdate(DocumentEvent e) {
+//    changed();
+//  }
+//  public void insertUpdate(DocumentEvent e) {
+//    changed();
+//  }
+//}
     /**
      * @param args the command line arguments
      */

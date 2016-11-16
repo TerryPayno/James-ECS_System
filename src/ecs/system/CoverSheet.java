@@ -38,7 +38,7 @@ public class CoverSheet {
         
     }
     public boolean Restobj(String Modcode){
-        String[] S = new String[2];
+        String[] S;// = new String[2];
         S = DbPro.Restobj(Modcode);
         ModCode = S[0];
         ModTitle = S[1];
@@ -62,11 +62,4 @@ public class CoverSheet {
     public String GetStudName(){
         return StudName;
     }
-//    public void GetDataDB(String Modcode){
-//    
-//    s = DbPro.getDataDB(Modcode);
-//    }
-//    public void inputDb(String code, String Title, int ID, String Name){
-//        DbPro.EnterDataDB(CoverSheetID,ModCode, ModTitle, StudID, StudName);
-//    }
 }
