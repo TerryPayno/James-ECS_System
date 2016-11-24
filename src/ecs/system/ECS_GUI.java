@@ -74,7 +74,7 @@ public class ECS_GUI extends javax.swing.JFrame {
 
         jLabel4.setText("Name");
 
-        jButton3.setText("jButton3");
+        jButton3.setText("Submit");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
