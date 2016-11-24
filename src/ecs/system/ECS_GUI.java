@@ -55,7 +55,6 @@ public class ECS_GUI extends javax.swing.JFrame {
 
         jLabel1.setText("Title");
 
-        jTextField1.setEditable(false);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -190,18 +189,9 @@ public class ECS_GUI extends javax.swing.JFrame {
         //call a method in update mediator to update the cover sheets to include new info in this case student ids and names.
         UpDateMed.UpdateCover(Tempvarcode, Tempvartitle, Tempvarid, Tempvarname);
     }//GEN-LAST:event_jButton3ActionPerformed
-    //jTextField1.getDocument().addDocumentListener(new DocumentListener() {
+
   
-//public void changedUpdate(DocumentEvent e) {
-//    changed();
-//  }
-//  public void removeUpdate(DocumentEvent e) {
-//    changed();
-//  }
-//  public void insertUpdate(DocumentEvent e) {
-//    changed();
-//  }
-//}
+
     /**
      * @param args the command line arguments
      */

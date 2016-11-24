@@ -10,11 +10,12 @@ package ecs.system;
  * @author jwepa
  */
 public class CoverSheetCreation_processor {
+//instantiation of coversheet object.
 CoverSheet cover  = new CoverSheet();
 
 
 public void CreateCoverSheet(String code, String Title){
-    
+//calling a method from within coversheets.   
     cover.CreateCoverSheet(code, Title);
     
 }

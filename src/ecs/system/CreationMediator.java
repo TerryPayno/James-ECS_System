@@ -15,19 +15,16 @@ import javax.swing.JOptionPane;
  * @author jwepa
  */
 public class CreationMediator {
+    //Instantiate the coversheetCreation_processor and Db_repo.
     CoverSheetCreation_processor CovsheCre = new CoverSheetCreation_processor();
-
     Db_Repo DbPro = new Db_Repo();
-     
-    /*public void initConnectToDb(){
-    DbPro.ConnectToDb();
-    }*/
     
-
     public void CreateCoverSheet(String code, String Title){
+        //Call a method from within the CoverSheetCreation_processor to create a coversheet.
         CovsheCre.CreateCoverSheet(code, Title);
+        //Display a message box to inform the user that there 
+        //coversheet has been updated successfully.
         JOptionPane.showMessageDialog(null, "CoverSheet Created");
     }
-
-    }
+}
 
