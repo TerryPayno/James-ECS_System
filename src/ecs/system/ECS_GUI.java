@@ -153,11 +153,25 @@ public class ECS_GUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // When button is clicked take the text from the textfeild and store in temp variables.
-        String Tempvar = jTextField1.getText(); 
+        String Tempvarcode = jTextField1.getText(); 
         String Tempvar2 = jTextField2.getText();
-
+           try{
+        if (Tempvarcode.length() < 5 || Tempvarcode.length() > 7){
+            
+            System.out.println("Module code should be between 6 and 7 chracters long");
+        }
+        else if( Tempvar2.length() < 3 || Tempvar2.length() > 20){
+            System.out.println("Module Title should be between 4 and 20 chracters long");
+        }
+        else{
+            CreationMed.CreateCoverSheet(Tempvarcode,Tempvar2);
+        }
+           }
+           catch(NumberFormatException e){
+               System.out.println("Please enter information into the textboxes");
+           }
         //Pass temp vars to the method within the CoversheetCreation class. 
-        CreationMed.CreateCoverSheet(Tempvar,Tempvar2);
+        
 
         
         
@@ -170,24 +184,52 @@ public class ECS_GUI extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // store text entered in GUI to a temp var
         String Tempvar = jTextField1.getText();
-        //create list of stirng to store info coming back form Db to display
+        if (Tempvar.length() > 4 && Tempvar.length() < 7){
+                    //create list of stirng to store info coming back form Db to display
         String[] S;
         //Request information from Database
         S = UpDateMed.getDataFromobj(Tempvar);
         // Set the text feilds to the information store at postion 0 and 1 in the list of strings
         jTextField1.setText(S[0]);
         jTextField2.setText(S[1]);
+        
+        }
+        else{
+            System.out.println("Module code should be between 6 and 7 chracters long");
+        }
+        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         //Again temp variables are used to store information from textfeilds on GUI
         String Tempvarcode = jTextField1.getText();
         String Tempvartitle = jTextField2.getText();
-        //Convert String passed in to a ineger and store in temp variable
-        int Tempvarid = Integer.parseInt(jTextField3.getText());
         String Tempvarname = jTextField4.getText();
+        //Convert String passed in to a ineger and store in temp variable
+        String temp = jTextField3.getText();
+       
+        try{
+        int Tempvarid = Integer.parseInt(temp);
+        if (Tempvarcode.length() < 5 || Tempvarcode.length() > 7){
+            
+            System.out.println("Module code should be between 6 and 7 chracters long");
+        }
+        else if( Tempvartitle.length() < 3 || Tempvartitle.length() > 20){
+            System.out.println("Module Title should be between 4 and 20 chracters long");
+        }
+        else if(Tempvarname.length() < 1){
+            System.out.println("Please enter your name");
+        }
+        else if (temp.length() > 6){
+            UpDateMed.UpdateCover(Tempvarcode, Tempvartitle, Tempvarid, Tempvarname);
+        }
+           }
+           catch(NumberFormatException e){
+               System.out.println("Please fill all textboxes and remember Student ID must be a number");
+           }
         //call a method in update mediator to update the cover sheets to include new info in this case student ids and names.
-        UpDateMed.UpdateCover(Tempvarcode, Tempvartitle, Tempvarid, Tempvarname);
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
   
